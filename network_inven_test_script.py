@@ -53,7 +53,8 @@ def device_model_names(csv_file):
 
 # If a site hasn't been added to the collection, this function will first search by the site_name and if it exists, it won't create a new site location, however, if not, it will add one 
 # and ensure that no duplicates are made that would otherwise corrupt the database.
-def populate_sites(site_names):
+def creation_of_sites(site_names):
+
     existing_sites = {site["site_name"] for site in db.sites.find({}, {"site_name": 1, "_id": 0})}
     
     count = 0
@@ -165,7 +166,7 @@ def upload_devices(csv_file):
     models = device_model_names(csv_file)
     
     print("Creating collections...")
-    populate_sites(site_names)
+    creation_of_sites(site_names)
     device_types(models)
     
     print("Starting device upload...")
