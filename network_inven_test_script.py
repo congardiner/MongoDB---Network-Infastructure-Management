@@ -7,6 +7,7 @@ from pymongo import MongoClient
 
 # This is what was provided by MongoDB when I created the cluster, along with the as a test user for the DB.
 client = MongoClient("mongodb+srv://test100:password123Nope@networkdb.hmz0oiw.mongodb.net/")
+
 db = client["NetworkDB"]
 
 
@@ -108,7 +109,8 @@ def vendor_model(model):
     # Could add more items to my csv file, as Avaya, Dell, HP, and many others are not included within my list.
     
     else:
-        return "Unknown"
+        print()
+        return None
     
 
 # Gets the site_id from site_name, it still checks if the sites was within the csv, before adding to the MongoDB.
@@ -248,6 +250,7 @@ if __name__ == "__main__":
     end_of_upload = time.time()
 
     print()
+    print()
     print("Cloud Network Inventory Database:")
     print("===================================")
     print()
@@ -257,5 +260,6 @@ if __name__ == "__main__":
     print()
     print("The upload to the DB was indeed successful, and no further issues were found.")
     print()
+
 
 
